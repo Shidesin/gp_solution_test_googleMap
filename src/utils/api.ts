@@ -1,7 +1,6 @@
-
-import {loadData, loadStatus, setState} from '../App/app-reducer';
-import {changeEmptyName, refactorDataToArray} from '../StopPoint/spotPoint';
 import {Dispatch} from 'redux';
+import {loadData, loadStatus, setState} from '../App/app-reducer';
+import {changeEmptyName, refactorDataToArray} from './spotPoint';
 
 
 export const fetchData = (str: string)  =>  (dispatch: Dispatch)  => {

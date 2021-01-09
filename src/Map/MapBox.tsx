@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from './MapBox.module.css'
-import {stopPiontType} from '../StopPoint/spotPoint';
+import {stopPiontType} from '../utils/spotPoint';
 import MarkerClusterer from '@googlemaps/markerclustererplus';
 
 interface IMap {
