@@ -1,32 +1,22 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from './MapBox.module.css'
 import {stopPiontType} from '../StopPoint/spotPoint';
+import MarkerClusterer from '@googlemaps/markerclustererplus';
 
 interface IMap {
     mapType: google.maps.MapTypeId,
     mapTypeControl?: boolean,
-    arrayMarker?: Array<stopPiontType> | any
+    arrayMarkers?: Array<stopPiontType> | any
 }
-
-interface IMarker {
-    address: string
-    latitude: number
-    longitude: number
-}
-
 
 type GoogleLatLng = google.maps.LatLng
 type GoogleMap = google.maps.Map
-// type GoogleMarker = google.maps.Marker;
 
-const MapBox: React.FC<IMap> = ({mapType, mapTypeControl, arrayMarker}) => {
-
+const MapBox: React.FC<IMap> = ({mapType, mapTypeControl, arrayMarkers}) => {
 
     const ref = useRef<HTMLDivElement>(null)
 
     const [map, setMap] = useState<GoogleMap>();
-
-    const [marker, setMarker] = useState<IMarker>();
 
     const startMap = (): void => {
         if (!map) {
@@ -36,25 +26,24 @@ const MapBox: React.FC<IMap> = ({mapType, mapTypeControl, arrayMarker}) => {
 
     const defaultMapStart = (): void => {
         const defaultAddress = new google.maps.LatLng(53.9, 27.56);
-        initMap(15, defaultAddress)
+        initMap(8, defaultAddress)
     }
 
-    const addMarker = (props: Array<stopPiontType>): void => {
-        props.map(obj => {
-            const location = new google.maps.LatLng(obj.lat, obj.lng)
-            new google.maps.Marker({
-                position: location,
-                map: map,
-                title: obj.name
-            })
+    const addMarker = arrayMarkers.map((obj: { lat: number; lng: number; name: any; }) => {
+        const location = new google.maps.LatLng(obj.lat, obj.lng)
+        return new google.maps.Marker({
+            position: location,
+            map: map,
+            title: obj.name
         })
+    })
 
-    }
 
-
-    if (arrayMarker){
-        addMarker((arrayMarker))
-    }
+    // @ts-ignore // this @ts-ignore MarkerClusterer defined via script
+    new MarkerClusterer(map, addMarker, {
+        imagePath:
+            'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+    });
 
 
     const initMap = (zoomLevel: number, address: GoogleLatLng) => {
@@ -79,7 +68,6 @@ const MapBox: React.FC<IMap> = ({mapType, mapTypeControl, arrayMarker}) => {
             <div ref={ref} className={styled.mapContainer_map}></div>
         </div>
     )
-
 }
 
 export default MapBox;

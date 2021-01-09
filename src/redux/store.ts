@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import {configureStore} from '@reduxjs/toolkit';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import {appReducer} from '../App/app-reducer';
 
 const rootReducer = combineReducers({

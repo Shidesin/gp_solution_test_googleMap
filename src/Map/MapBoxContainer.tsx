@@ -9,7 +9,7 @@ export const MapBoxContainer = () => {
 
     const [scriptLoader, setScriptLoader] = useState<boolean>(false)
 
-    const arrayMarker = useSelector<AppRootStateType>(getBreakPoints)
+    const arrayMarkers = useSelector<AppRootStateType>(getBreakPoints)
 
     useEffect(() => {
         const googleMapScripts =loadMapApi();
@@ -21,7 +21,7 @@ export const MapBoxContainer = () => {
     return (
         <div>
             {scriptLoader &&
-            <MapBox mapType={google.maps.MapTypeId.ROADMAP} mapTypeControl={true} arrayMarker={arrayMarker}/>}
+            <MapBox mapType={google.maps.MapTypeId.ROADMAP} mapTypeControl={true} arrayMarkers={arrayMarkers}/>}
         </div>
     );
 }

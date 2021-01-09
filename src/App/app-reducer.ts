@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+
 export enum loadStatus {
     loadingOn = 'Loading start',
     loadingOff = 'Loading finish',

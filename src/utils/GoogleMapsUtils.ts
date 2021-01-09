@@ -1,5 +1,5 @@
 const loadMapApi = () => {
-    const mapsUrl = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDKkS8ll9ZPtZeG0SViZxlufOtPokQsTiI&libraries=places&language=ru&v=quarterly`;
+    const mapsUrl = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY }&libraries=places&language=ru&v=quarterly`;
     const scripts = document.getElementsByTagName('script')
 
     for(let i = 0; i < scripts.length; i++){

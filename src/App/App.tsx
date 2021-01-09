@@ -3,7 +3,7 @@ import './App.css';
 import {fetchData} from '../utils/api';
 import {useDispatch} from 'react-redux';
 import {localInitialState} from '../redux/initialState';
-import { MapBoxContainer } from '../Map';
+import {MapBoxContainer} from '../Map';
 
 
 function App() {
@@ -16,8 +16,7 @@ function App() {
 
     return (
         <div>
-            {/*<MapBoxContainer />*/}
-
+            <MapBoxContainer />
         </div>
     );
 }
