@@ -1,0 +1,6 @@
+.contentBox {
+    display: flex;
+    flex-direction: row;
+    height: 84vh;
+    background-color: #001529;
+}

@@ -64,7 +64,7 @@ const MapBox: React.FC<IMap> = ({mapType, mapTypeControl, arrayMarkers}) => {
     useEffect(startMap, [map])
 
     return (
-        <div className={styled.mapContainer}>
+        <div >
             <div ref={ref} className={styled.mapContainer_map}></div>
         </div>
     )

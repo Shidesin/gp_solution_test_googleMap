@@ -1,9 +1,13 @@
 import React, {useEffect} from 'react';
-import './App.css';
 import {useDispatch} from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import {localInitialState} from '../redux/initialState';
-import {MapBoxContainer} from '../Map';
 import {fetchData} from '../utils';
+import Content from '../Content';
+import styled from './App.module.css'
+import {HeaderComponent} from '../Header';
+import {FooterComponent} from '../Footer';
+
 
 
 function App() {
@@ -15,9 +19,13 @@ function App() {
     }, [])
 
     return (
-        <div>
-            <MapBoxContainer />
-        </div>
+        <BrowserRouter>
+            <div className={styled.main_Сontainer}>
+                <HeaderComponent/>
+                <Content/>
+                <FooterComponent/>
+            </div>
+        </BrowserRouter>
     );
 }
 

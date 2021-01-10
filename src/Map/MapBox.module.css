@@ -1,10 +1,12 @@
 .mapContainer {
     display: flex;
     justify-content: center;
-
+    align-items: center;
 }
 
 .mapContainer_map {
-    height: 60vh;
-    width: 80%;
+    border: #001529 solid 2px;
+    border-radius: 5px ;
+    height: 700px;
+    width: 100vmax;
 }

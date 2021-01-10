@@ -9,7 +9,8 @@ export enum loadStatus {
 
 const initialState: initialStateType = {
     loading: loadStatus.loadingOn,
-    data: []
+    data: [],
+    showMenu: false
 }
 
 const slice = createSlice({
@@ -22,17 +23,21 @@ const slice = createSlice({
         setState(state, action) {
             state.data = action.payload
         },
+        showMenu(state, action) {
+            state.showMenu = action.payload
+        }
     }
 })
 
-export const {loadData,setState} = slice.actions;
+export const {loadData, setState, showMenu} = slice.actions;
 
 export const appReducer = slice.reducer
 
 
 type initialStateType = {
     loading: loadStatus
-    data:  [] | stoppingPointType[]
+    data: [] | stoppingPointType[]
+    showMenu: boolean
 }
 
 type stoppingPointType = {
