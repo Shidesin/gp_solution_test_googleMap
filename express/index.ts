@@ -10,6 +10,9 @@ if (port == null || port == '') {
     port = String(8000);
 }
 
+
+app.use('/', express.static(path.resolve(__dirname, './../build')));
+
 app.get('/', (req, res) => {
 
     const options = {
