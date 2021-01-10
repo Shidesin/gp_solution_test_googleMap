@@ -1,7 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from './MapBox.module.css'
-import {stopPiontType} from '../utils/spotPoint';
 import MarkerClusterer from '@googlemaps/markerclustererplus';
+
+interface stopPiontType {
+    name: string
+    lat: number
+    lng: number
+    id: string
+}
 
 interface IMap {
     mapType: google.maps.MapTypeId,

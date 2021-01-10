@@ -21,6 +21,7 @@ const slice = createSlice({
             state.loading = action.payload
         },
         setState(state, action) {
+            debugger
             state.data = action.payload
         },
         showMenu(state, action) {

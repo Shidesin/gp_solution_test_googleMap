@@ -1,33 +1,29 @@
 import {Dispatch} from 'redux';
+import axios from 'axios';
 import {loadData, loadStatus, setState} from '../App/app-reducer';
-import {changeEmptyName, refactorDataToArray} from './spotPoint';
 
+const instance = axios.create({
+    baseURL: `http://localhost:8000/`,
+});
 
-export const fetchData = (str: string)  =>  (dispatch: Dispatch)  => {
-    dispatch(loadData(loadStatus.loadingOn))
-    try {
-        let dataRefactor = refactorDataToArray(str)
-        let validData = changeEmptyName(dataRefactor)
-        dispatch(setState(validData))
-        dispatch(loadData(loadStatus.loadingOff))
-    } catch (e) {
-        console.log(e)
-        dispatch(loadData(loadStatus.loadingError))
+export const API = {
+    getDataStoppingPoints() {
+        debugger
+        return instance.get('')
     }
 }
 
-
-// export const fetchData = ()  => async (dispatch: Dispatch)  => {
-//     try {
-//         let response = await fetch('https://cors-anywhere.herokuapp.com/http://www.minsktrans.by/city/minsk/stops.txt');
-//         let responseData = await response.text()
-//         let dataRefactor = refactorDataToArray(responseData)
-//         let validData = changeEmptyName(dataRefactor)
-//         dispatch(setState(validData))
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
-
+export const fetchData = () => (dispatch: Dispatch) => {
+    debugger
+    dispatch(loadData(loadStatus.loadingOn))
+    API.getDataStoppingPoints().then(res => {
+        debugger
+        dispatch(setState(res.data))
+        setTimeout(() => dispatch(loadData(loadStatus.loadingOff)),2000)
+    }).catch(e => {
+        console.log(e)
+        dispatch(loadData(loadStatus.loadingError))
+    })
+}
 
 
