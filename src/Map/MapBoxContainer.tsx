@@ -3,7 +3,7 @@ import loadMapApi from '../utils';
 import MapBox from './MapBox';
 import {useSelector} from 'react-redux';
 import {AppRootStateType} from '../redux/store';
-import {getBreakPoints} from '../selectors/appSelector';
+import {getBreakPoints} from '../selectors';
 import styled from './MapBox.module.css';
 
 export const MapBoxContainer = () => {

@@ -20,6 +20,5 @@ export const HeaderComponent: React.FC = () => {
 
         </Header>
 
-
     )
 }

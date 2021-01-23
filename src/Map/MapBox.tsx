@@ -35,7 +35,7 @@ const MapBox: React.FC<IMap> = ({mapType, mapTypeControl, arrayMarkers}) => {
         initMap(8, defaultAddress)
     }
 
-    const addMarker = arrayMarkers.map((obj: { lat: number; lng: number; name: any; }) => {
+    const addMarker = arrayMarkers.map((obj: { lat: number; lng: number; name: string; }) => {
         const location = new google.maps.LatLng(obj.lat, obj.lng)
         return new google.maps.Marker({
             position: location,

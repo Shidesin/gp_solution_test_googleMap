@@ -8,8 +8,7 @@ const instance = axios.create({
 
 export const API = {
     getDataStoppingPoints() {
-        debugger
-        return instance.get('')
+        return instance.get(`stops`)
     }
 }
 
@@ -17,7 +16,6 @@ export const fetchData = () => (dispatch: Dispatch) => {
     debugger
     dispatch(loadData(loadStatus.loadingOn))
     API.getDataStoppingPoints().then(res => {
-        debugger
         dispatch(setState(res.data))
         setTimeout(() => dispatch(loadData(loadStatus.loadingOff)),2000)
     }).catch(e => {

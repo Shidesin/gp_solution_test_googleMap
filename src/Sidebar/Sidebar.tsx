@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 import {showMenuSelector} from '../selectors';
 import {showMenu} from '../App';
 import {Drawer, Menu} from 'antd';
-import {CarFilled, ProfileTwoTone, CompassFilled} from '@ant-design/icons'
+import {CarFilled, OrderedListOutlined, CompassFilled} from '@ant-design/icons'
 import 'antd/dist/antd.css';
 import styled from './Sidebar.module.css'
 
@@ -32,10 +32,10 @@ export const Sidebar: React.FC = () => {
                     <Menu>
                         <Menu.Item key="1" icon={<CompassFilled style={styledIcon}/>}>
                             <NavLink to={'/map'} activeClassName={styled.activeLink}>
-                                Карта
+                                Карта всех остановочных пунктов
                             </NavLink>
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<ProfileTwoTone style={styledIcon}/>}>
+                        <Menu.Item key="2" icon={<OrderedListOutlined style={styledIcon}/>}>
                             <NavLink to={'/transportRoutes'} activeClassName={styled.activeLink}>
                                 Маршруты
                             </NavLink>

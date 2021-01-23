@@ -43,6 +43,7 @@ type initialStateType = {
 
 type stoppingPointType = {
     name: string
-    lng: string
-    lat: string
+    lng: number
+    lat: number
+    id: string
 }
