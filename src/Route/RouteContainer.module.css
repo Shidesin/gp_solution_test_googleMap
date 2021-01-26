@@ -1,0 +1,32 @@
+.route_container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid aliceblue;
+    border-radius: 3px;
+    margin: 5px;
+    height: inherit;
+}
+.route_container:hover { color: rgb(24, 144, 255)
+}
+.route_container:active { color: #18beff
+}
+
+.route_container__number {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    width: 2vw;
+    margin: 0 5px;
+}
+
+.route_container__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    margin: 0 5px;
+}
+

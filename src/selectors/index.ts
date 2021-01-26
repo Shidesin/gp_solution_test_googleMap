@@ -1,1 +1,1 @@
-export {getBreakPoints, showMenuSelector, loaderSelector} from './appSelector'
+export {getBreakPoints, loaderSelector,  searchRoutesSelector, SearchWordSelector,  currentRouteCoordinateSelector} from './appSelector'

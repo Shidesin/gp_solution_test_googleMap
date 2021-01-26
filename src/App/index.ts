@@ -1,3 +1,5 @@
 export {default} from './App'
 
-export {loadData,setState,showMenu} from './app-reducer'
+export {loadData,setStateStops, setStateRoutes, loadStatus, setSearchWord, setcurrentRouteCoordinate} from './app-reducer'
+
+export type {stopsPointType,routesType} from './app-reducer'

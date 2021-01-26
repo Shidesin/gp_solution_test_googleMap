@@ -1,2 +1,3 @@
 export {default} from './GoogleMapsUtils'
-export {fetchData} from './api'
+export {fetchDataStopsPoint, fetchDataRoutes} from './api'
+export {calculateAndDisplayRoute} from './helpersFunction'

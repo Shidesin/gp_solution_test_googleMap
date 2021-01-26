@@ -1,15 +1,16 @@
-.nav {
-    grid-area: n;
-    background-color: gray;
-    padding: 20px;
-    width: 150px;
+.tabs_containrer {
+    width: 30vw;
+    height: 84vh;
 }
 
-.item a{
-    color: white;
-    text-decoration: none;
+.stops {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.item a.activeLink {
-    color: gold;
+.transportRoutes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

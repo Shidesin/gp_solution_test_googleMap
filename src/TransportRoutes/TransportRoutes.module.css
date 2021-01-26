@@ -4,3 +4,21 @@
     margin: 0 auto;
 }
 
+.search_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_search {
+    padding: 5px;
+    /*width: 5vw;*/
+}
+
+.displayResult_container {
+    border: 2px wheat solid;
+    border-radius: 3px;
+    margin: 2px;
+    overflow: auto;
+    height: 64vh;
+}

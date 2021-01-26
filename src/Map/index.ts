@@ -1,2 +1,2 @@
-export {default} from './MapBox'
+export {MapComponent} from './MapComponent'
 export {MapBoxContainer} from './MapBoxContainer'

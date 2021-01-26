@@ -1,27 +1,44 @@
 import {Dispatch} from 'redux';
 import axios from 'axios';
-import {loadData, loadStatus, setState} from '../App/app-reducer';
+import {loadData, loadStatus, setStateStops, setStateRoutes} from '../App';
 
 const instance = axios.create({
     baseURL: `http://localhost:8000/`,
 });
 
 export const API = {
-    getDataStoppingPoints() {
-        return instance.get(`stops`)
+    getStoppingPoints() {
+        return instance.get(`stops/`)
+    },
+    getRoutes() {
+        return instance.get(`routes/`)
     }
 }
 
-export const fetchData = () => (dispatch: Dispatch) => {
-    debugger
-    dispatch(loadData(loadStatus.loadingOn))
-    API.getDataStoppingPoints().then(res => {
-        dispatch(setState(res.data))
-        setTimeout(() => dispatch(loadData(loadStatus.loadingOff)),2000)
-    }).catch(e => {
+export const fetchDataStopsPoint = () => async (dispatch: Dispatch) => {
+    try {
+        let response = await API.getStoppingPoints();
+        if (response.status === 200) {
+            dispatch(setStateStops(response.data))
+        }
+    } catch (e) {
         console.log(e)
         dispatch(loadData(loadStatus.loadingError))
-    })
+        throw new Error(e)
+    }
+}
+
+export const fetchDataRoutes = () => async (dispatch: Dispatch) => {
+    try {
+        let response = await API.getRoutes();
+        if (response.status === 200) {
+            dispatch(setStateRoutes(response.data))
+        }
+    } catch (e) {
+        console.log(e)
+        dispatch(loadData(loadStatus.loadingError))
+        throw new Error(e)
+    }
 }
 
 

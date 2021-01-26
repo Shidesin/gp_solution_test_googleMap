@@ -1,53 +1,29 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {NavLink} from 'react-router-dom';
-import {showMenuSelector} from '../selectors';
-import {showMenu} from '../App';
-import {Drawer, Menu} from 'antd';
-import {CarFilled, OrderedListOutlined, CompassFilled} from '@ant-design/icons'
-import 'antd/dist/antd.css';
-import styled from './Sidebar.module.css'
+import {Tabs} from 'antd';
+import {TransportRoutes} from '../TransportRoutes';
+import {StopPointsContainer} from '../StopPoints';
 
-const styledIcon = {
-    fontSize: '25px'
+import 'antd/dist/antd.css';
+import style from './Sidebar.module.css'
+
+const {TabPane} = Tabs;
+
+type propsType = {
+    tabHendler: (key: string) => void
+    clearMarkersRoute: () => void
 }
 
-export const Sidebar: React.FC = () => {
-    const dispatch = useDispatch()
-    const visibleMenu = useSelector(showMenuSelector)
-    const onClose = () => {
-        dispatch(showMenu(false))
-    };
+export const Sidebar: React.FC<propsType> = ({tabHendler, clearMarkersRoute}) => {
+    console.log('render Sidebar')
 
     return (
-        <>
-            <Drawer
-                title="Меню"
-                placement="left"
-                closable={false}
-                onClose={onClose}
-                visible={visibleMenu}
-            >
-                <nav>
-                    <Menu>
-                        <Menu.Item key="1" icon={<CompassFilled style={styledIcon}/>}>
-                            <NavLink to={'/map'} activeClassName={styled.activeLink}>
-                                Карта всех остановочных пунктов
-                            </NavLink>
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<OrderedListOutlined style={styledIcon}/>}>
-                            <NavLink to={'/transportRoutes'} activeClassName={styled.activeLink}>
-                                Маршруты
-                            </NavLink>
-                        </Menu.Item>
-                        <Menu.Item key="3" icon={<CarFilled style={styledIcon}/>}>
-                            <NavLink to={'/searchTrack'} activeClassName={styled.activeLink}>
-                                Транспорт
-                            </NavLink>
-                        </Menu.Item>
-                    </Menu>
-                </nav>
-            </Drawer>
-        </>
+        <Tabs defaultActiveKey={'transportRoutes'} onTabClick={tabHendler} type="card" className={style.tabs_containrer}>
+            <TabPane tab={'Остановочные пункты'} key="stops" className={style.stops}>
+                <StopPointsContainer />
+            </TabPane>
+            <TabPane  tab={'Транспортные маршруты'} key="transportRoutes" className={style.transportRoutes}>
+                <TransportRoutes clearMarkersRoute={clearMarkersRoute}/>
+            </TabPane>
+        </Tabs>
     )
 }

@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-
 export enum loadStatus {
     loadingOn = 'Loading start',
     loadingOff = 'Loading finish',
@@ -9,8 +8,10 @@ export enum loadStatus {
 
 const initialState: initialStateType = {
     loading: loadStatus.loadingOn,
-    data: [],
-    showMenu: false
+    dataStops: [],
+    dataRoutes: [],
+    searchWord: '',
+    currentRouteCoordinate: null
 }
 
 const slice = createSlice({
@@ -20,30 +21,50 @@ const slice = createSlice({
         loadData(state, action) {
             state.loading = action.payload
         },
-        setState(state, action) {
-            debugger
-            state.data = action.payload
+        setStateStops(state, action) {
+            state.dataStops = action.payload
         },
-        showMenu(state, action) {
-            state.showMenu = action.payload
+        setStateRoutes(state, action) {
+            state.dataRoutes = action.payload
+        },
+        setSearchWord(state, action){
+            state.searchWord = action.payload
+        },
+        setcurrentRouteCoordinate(state, action){
+            state.currentRouteCoordinate = action.payload
         }
     }
 })
 
-export const {loadData, setState, showMenu} = slice.actions;
+export const {loadData, setStateStops, setStateRoutes, setSearchWord, setcurrentRouteCoordinate} = slice.actions;
 
 export const appReducer = slice.reducer
 
 
 type initialStateType = {
     loading: loadStatus
-    data: [] | stoppingPointType[]
-    showMenu: boolean
+    dataStops: [] | stopsPointType[]
+    dataRoutes: [] | routesType[]
+    searchWord: string
+    currentRouteCoordinate: stopsPointType[] | null
 }
 
-type stoppingPointType = {
+export type stopsPointType = {
     name: string
     lng: number
     lat: number
     id: string
+}
+
+export type routesType = {
+    routeNum: string,
+    transport: string,
+    operator: string,
+    validityPeriods: string[] | string,
+    routeTag: string,
+    routeType: string,
+    routeName: string,
+    weekdays: string,
+    routeID: string,
+    routeStops: string[]
 }
